@@ -1,4 +1,4 @@
-package math
+package io.github.chankyin.algos.math
 
 import kotlin.math.sqrt
 
@@ -40,10 +40,10 @@ class Vector(val values: numberArray) {
 
 	infix fun dot(that: Vector) = (this * that).values.sum()
 
-	override fun toString() = values.joinToString(prefix = "(", postfix = ")")
-
 	override fun equals(other: Any?) = other is Vector && values.contentEquals(other.values)
 	override fun hashCode(): Int = values.hashCode()
+
+	override fun toString() = values.joinToString(prefix = "(", postfix = ")")
 
 	fun matrixRow() = Matrix(values, 1, dimension)
 	fun matrixCol() = Matrix(values, dimension, 1)
@@ -52,7 +52,9 @@ class Vector(val values: numberArray) {
 	fun map(f: (number)->number) = Vector(values.size) {f(values[it])}
 
 	private inline fun biMap(that: Vector, mapper: (number, number)->number): Vector {
-		if(this.dimension != that.dimension) throw IllegalArgumentException("Dimensions are incompatible")
+		if(this.dimension != that.dimension) {
+			throw IllegalArgumentException("Dimensions are incompatible: ${this.dimension} != ${that.dimension}")
+		}
 
 		return Vector(numberArray(dimension) {mapper(this.values[it], that.values[it])})
 	}

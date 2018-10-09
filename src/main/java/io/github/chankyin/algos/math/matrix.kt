@@ -1,4 +1,4 @@
-package math
+package io.github.chankyin.algos.math
 
 import java.util.*
 import kotlin.math.roundToInt
@@ -132,7 +132,9 @@ open class Matrix {
 	fun transpose() = Matrix(n, m) {i, j -> this[j, i]}
 
 	operator fun times(that: Matrix): Matrix {
-		if(this.n != that.m) throw IllegalArgumentException("Dimensions are incompatible")
+		if(this.n != that.m) {
+			throw IllegalArgumentException("Dimensions are incompatible: ${this.n} != ${that.m}")
+		}
 
 		return Matrix(this.m, that.n) {i, j -> (this row i) dot (that col j)}
 	}

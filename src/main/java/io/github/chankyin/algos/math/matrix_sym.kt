@@ -1,4 +1,4 @@
-package math
+package io.github.chankyin.algos.math
 
 class SymmetricMatrix(n: Int, f: (i: Int, j: Int)->number) : Matrix(n, n, f) {
 	override fun set(i: Int, j: Int, value: number) {

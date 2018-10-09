@@ -1,6 +1,6 @@
-package ann
+package io.github.chankyin.algos.ann
 
-import math.SymmetricMatrix
+import io.github.chankyin.algos.math.SymmetricMatrix
 
 class HopfieldNetwork(size: Int) {
 	val weights = SymmetricMatrix(size) {_, _ -> Math.random()}

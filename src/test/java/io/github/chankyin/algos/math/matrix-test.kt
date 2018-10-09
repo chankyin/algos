@@ -1,5 +1,8 @@
-package math
+package io.github.chankyin.algos.math
 
+import io.github.chankyin.algos.assertFinite6
+import io.github.chankyin.algos.genFinite
+import io.github.chankyin.algos.genRange
 import io.kotlintest.matchers.exactly
 import io.kotlintest.matchers.plusOrMinus
 import io.kotlintest.properties.assertAll

@@ -1,7 +1,7 @@
-package ann
+package io.github.chankyin.algos.ann
 
-import math.Matrix
-import math.Vector
+import io.github.chankyin.algos.math.Matrix
+import io.github.chankyin.algos.math.Vector
 import kotlin.math.sqrt
 
 class Sofm(

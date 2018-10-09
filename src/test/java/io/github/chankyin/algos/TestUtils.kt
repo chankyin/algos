@@ -1,8 +1,11 @@
-package math
+package io.github.chankyin.algos
 
 import io.kotlintest.properties.Gen
 import io.kotlintest.properties.PropertyContext
 import io.kotlintest.properties.assertAll
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
 
 fun genRange(range: IntRange) = object : Gen<Int> {
 	override fun constants(): Iterable<Int> = range
