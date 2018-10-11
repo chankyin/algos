@@ -73,7 +73,11 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -132,7 +136,16 @@
 			<groupId>jfree</groupId>
 			<artifactId>jfreechart</artifactId>
 			<version>1.0.13</version>
+			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.intellij</groupId>
+			<artifactId>forms_rt</artifactId>
+			<version>6.0.5</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<dependency>
 			<groupId>io.kotlintest</groupId>

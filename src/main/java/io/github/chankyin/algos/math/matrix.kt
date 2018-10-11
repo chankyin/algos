@@ -129,6 +129,8 @@ open class Matrix {
 	infix fun row(i: Int) = Vector(numberArray(n) {j -> this[i, j]})
 	infix fun col(j: Int) = Vector(values.sliceArray(m * j until m * (j + 1)))
 
+	fun map(f: (Double)->Double) = Matrix(m, n) {i, j -> f(this[i, j])}
+
 	fun transpose() = Matrix(n, m) {i, j -> this[j, i]}
 
 	operator fun times(that: Matrix): Matrix {
@@ -241,10 +243,6 @@ open class Matrix {
 		val ops = left.toIdentity()
 		for(op in ops) {
 			op(right)
-		}
-
-		if(!(this * right).equals(identity(n), 1.0e-10)) {
-			println()
 		}
 
 		return right

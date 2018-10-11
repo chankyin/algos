@@ -1,6 +1,6 @@
 package io.github.chankyin.algos.math
 
-import kotlin.math.sqrt
+import kotlin.math.*
 
 internal typealias number = Double
 internal typealias numberArray = DoubleArray
@@ -43,7 +43,18 @@ class Vector(val values: numberArray) {
 	override fun equals(other: Any?) = other is Vector && values.contentEquals(other.values)
 	override fun hashCode(): Int = values.hashCode()
 
-	override fun toString() = values.joinToString(prefix = "(", postfix = ")")
+	override fun toString() = toString(null)
+	fun toString(sigFig: Int? = null): String {
+		return values.map {
+			if(sigFig == null || it == 0.0) return@map it.toString()
+			val unit = floor(log10(abs(it))) // 0.10 to 0.99 = -1
+			val factor = 10.0.pow(-unit + sigFig - 1) // 0.10 * 10^+1 = 1.0, * 10^(sigFig-1)
+			if((factor*it).isNaN()){
+				println()
+			}
+			(it * factor).roundToLong() / factor
+		}.joinToString(prefix = "(", postfix = ")")
+	}
 
 	fun matrixRow() = Matrix(values, 1, dimension)
 	fun matrixCol() = Matrix(values, dimension, 1)
